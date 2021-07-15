@@ -1,0 +1,70 @@
+﻿<Window x:Class="SignUpWithHandy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:local="clr-namespace:SignUpWithHandy"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Signup">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0.055"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.008"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="11.25"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.875"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Signin">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.6" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseDown" SourceName="textBlock">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Border x:Name="border" CornerRadius="10" Background="White" RenderTransformOrigin="0.5,0.5">
+        <Border.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Border.RenderTransform>
+        <Grid>
+            <Grid x:Name="Signup" Margin="0,31.875,0,19.158">
+                <TextBlock HorizontalAlignment="Left" Height="50.625" TextWrapping="Wrap" Text="Create account" VerticalAlignment="Top" Width="500" FontSize="36" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Height="28.125" Margin="114.375,55.625,0,0" TextWrapping="Wrap" Text="Already have an account? " VerticalAlignment="Top" Width="215" TextAlignment="Center" FontSize="18" Foreground="#FF494949"/>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="28.125" Margin="326.875,55.625,0,0" TextWrapping="Wrap" Text="Sign In" VerticalAlignment="Top" Width="60.625" TextAlignment="Center" FontSize="18" TextDecorations="Underline" Foreground="#FF0A33EC"/>
+                <hc:TextBox hc:InfoElement.Placeholder="Username" HorizontalAlignment="Left" Height="52.5" Margin="43.125,106.875,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416.25" FontSize="18"/>
+                <hc:TextBox hc:InfoElement.Placeholder="Firstname" HorizontalAlignment="Left" Height="52.5" Margin="43.125,174.375,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202.5" FontSize="18"/>
+                <hc:TextBox hc:InfoElement.Placeholder="Lastname" HorizontalAlignment="Left" Height="52.5" Margin="256.875,174.375,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202.5" FontSize="18"/>
+                <hc:TextBox hc:InfoElement.Placeholder="E-mail" HorizontalAlignment="Left" Height="52.5" Margin="43.125,243.75,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416.25" FontSize="18"/>
+                <Button Margin="43.125,312.5,40.625,41.467"
+                    Content="Sign up" Height="45" Background="#FF0A33EC" Foreground="White" FontSize="18" Width="416.25"/>
+                <CheckBox Content="I have read and agree to the" HorizontalAlignment="Left" Height="29.375" Margin="43.125,368.125,0,0" VerticalAlignment="Top" Width="253.125" FontSize="18" Foreground="#FF494949"/>
+                <TextBlock HorizontalAlignment="Left" Height="28.124" Margin="301.25,370.843,0,0" TextWrapping="Wrap" Text="Terms of Service" VerticalAlignment="Top" Width="158.125" FontSize="18" TextDecorations="{x:Null}" Foreground="#FF0A33EC"/>
+            </Grid>
+            <Grid x:Name="Signin" Margin="0,31.875,0,19.158" Visibility="Hidden">
+                <TextBlock HorizontalAlignment="Left" Height="50.625" TextWrapping="Wrap" Text="Create account" VerticalAlignment="Top" Width="500" FontSize="36" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Height="28.125" Margin="114.375,55.625,0,0" TextWrapping="Wrap" Text="Don't have an account? " VerticalAlignment="Top" Width="215" TextAlignment="Center" FontSize="18" Foreground="#FF494949"/>
+                <TextBlock HorizontalAlignment="Left" Height="28.125" Margin="326.875,55.625,0,0" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Width="60.625" TextAlignment="Center" FontSize="18" TextDecorations="Underline" Foreground="#FF0A33EC"/>
+                <hc:TextBox hc:InfoElement.Placeholder="Username" HorizontalAlignment="Left" Height="52.5" Margin="43.125,106.875,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416.25" FontSize="18"/>
+                <hc:TextBox hc:InfoElement.Placeholder="E-mail" HorizontalAlignment="Left" Height="52.5" Margin="43.125,172.5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416.25" FontSize="18"/>
+                <Button Margin="43.125,312.5,40.625,41.467"
+                    Content="Sign in" Height="45" Background="#FF0A33EC" Foreground="White" FontSize="18" Width="416.25"/>
+                <hc:PasswordBox ShowClearButton="True" ShowEyeButton="True" HorizontalAlignment="Left" Margin="43.125,237.5,0,0" VerticalAlignment="Top" Width="416.25" Height="52.5" FontSize="18"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
